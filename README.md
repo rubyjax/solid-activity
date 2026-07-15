@@ -1,24 +1,33 @@
-# README
+# solid-activity
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 8 demo: authenticated activity feed showcasing Solid Queue, Solid Cache, and Solid Cable.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+```sh
+bundle install
+bin/rails db:prepare
+```
 
-* System dependencies
+## Run
 
-* Configuration
+```sh
+bin/dev   # or: bin/rails server + bin/jobs in a second terminal
+```
 
-* Database creation
+Open http://localhost:3000 — sign up (or sign in) to use the feed.
 
-* Database initialization
+Mission Control: http://localhost:3000/jobs (`admin` / `solid` by default)
 
-* How to run the test suite
+## What to notice
 
-* Services (job queues, cache servers, search engines, etc.)
+- New posts appear as pending (Queue callout), then flip to ready over Cable
+- Ready posts show a Cache callout and are fragment-cached
+- Recurring purge removes pending posts older than 15 minutes
 
-* Deployment instructions
+## Tests
 
-* ...
+```sh
+bin/rails test
+bin/rails test:system
+```
