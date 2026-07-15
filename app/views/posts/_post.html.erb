@@ -3,6 +3,19 @@
     <% cache post do %>
       <%= render "posts/post_ready", post: post %>
     <% end %>
+
+    <% if post.user_id == Current.user&.id %>
+      <%= button_to "Delete", post_path(post), method: :delete %>
+    <% end %>
+
+    <section id="<%= dom_id(post, :comments) %>">
+      <%= render post.comments.includes(:user) %>
+    </section>
+
+    <%= form_with model: [post, Comment.new], id: dom_id(post, :comment_form) do |f| %>
+      <%= f.text_area :body, required: true %>
+      <%= f.submit "Comment" %>
+    <% end %>
   <% else %>
     <%= render "posts/post_pending_or_failed", post: post %>
   <% end %>

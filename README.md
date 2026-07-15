@@ -21,8 +21,8 @@ Mission Control: http://localhost:3000/jobs (`admin` / `solid` by default)
 
 ## What to notice
 
-- New posts appear as pending (Queue callout), then flip to ready over Cable
-- Ready posts show a Cache callout and are fragment-cached
+- New posts appear as pending (Queue callout), then flip to ready over Cable (`bin/dev` runs web + `bin/jobs`; development uses Solid Cable so cross-process broadcasts work)
+- Ready posts show a Cache callout and are fragment-cached via Solid Cache
 - Recurring purge removes pending posts older than 15 minutes
 
 ## Tests
