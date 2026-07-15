@@ -1,1 +1,16 @@
-<p>Activity feed coming soon.</p>
+<%= turbo_stream_from "activity" %>
+
+<header>
+  <h1>Solid Activity</h1>
+  <p>Showcase feed — Queue enriches, Cable streams, Cache serves repeats.</p>
+  <%= link_to "Mission Control", "/jobs" %>
+  <%= button_to "Sign out", session_path, method: :delete %>
+</header>
+
+<section id="new_post_form">
+  <%= render "posts/form", post: @post %>
+</section>
+
+<div id="activity_feed">
+  <%= render @posts %>
+</div>

@@ -1,0 +1,15 @@
+<%= form_with model: post do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :body, "What's happening?" %>
+  <%= f.text_area :body, required: true, rows: 3 %>
+  <%= f.submit "Post" %>
+<% end %>

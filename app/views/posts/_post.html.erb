@@ -1,5 +1,24 @@
-<%= tag.div id: dom_id(post) do %>
-  <p><%= post.body %></p>
-  <p><%= post.status %></p>
-  <p><%= post.summary %></p>
+<%= tag.article id: dom_id(post), class: "post post--#{post.status}" do %>
+  <header>
+    <strong><%= post.user.email_address %></strong>
+    <span class="callout callout--cable">Solid Cable</span>
+  </header>
+
+  <% if post.pending? %>
+    <p class="callout callout--queue">Processing via Solid Queue…</p>
+    <p><%= post.body %></p>
+  <% elsif post.failed? %>
+    <p class="callout callout--queue">Enrichment failed (Solid Queue)</p>
+    <p><%= post.body %></p>
+  <% else %>
+    <p class="summary"><%= post.summary %></p>
+    <p><%= post.body %></p>
+  <% end %>
+
+  <% if post.user_id == Current.user&.id %>
+    <%= button_to "Delete", post_path(post), method: :delete %>
+  <% end %>
+
+  <section id="<%= dom_id(post, :comments) %>">
+  </section>
 <% end %>

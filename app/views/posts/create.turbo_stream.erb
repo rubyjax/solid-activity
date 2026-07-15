@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "activity_feed", partial: "posts/post", locals: { post: @post } %>
+<%= turbo_stream.update "new_post_form", partial: "posts/form", locals: { post: Post.new } %>
