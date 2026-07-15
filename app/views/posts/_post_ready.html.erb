@@ -1,0 +1,15 @@
+<header>
+  <strong><%= post.user.email_address %></strong>
+  <span class="callout callout--cable">Solid Cable</span>
+  <span class="callout callout--cache">Solid Cache</span>
+</header>
+
+<p class="summary"><%= post.summary %></p>
+<p><%= post.body %></p>
+
+<% if post.user_id == Current.user&.id %>
+  <%= button_to "Delete", post_path(post), method: :delete %>
+<% end %>
+
+<section id="<%= dom_id(post, :comments) %>">
+</section>

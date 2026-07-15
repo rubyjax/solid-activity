@@ -1,0 +1,18 @@
+<header>
+  <strong><%= post.user.email_address %></strong>
+</header>
+
+<% if post.pending? %>
+  <p class="callout callout--queue">Processing via Solid Queue…</p>
+  <p><%= post.body %></p>
+<% elsif post.failed? %>
+  <p class="callout callout--queue">Enrichment failed (Solid Queue)</p>
+  <p><%= post.body %></p>
+<% end %>
+
+<% if post.user_id == Current.user&.id %>
+  <%= button_to "Delete", post_path(post), method: :delete %>
+<% end %>
+
+<section id="<%= dom_id(post, :comments) %>">
+</section>
