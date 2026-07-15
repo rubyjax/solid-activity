@@ -1,0 +1,7 @@
+<article id="<%= dom_id(comment) %>" class="comment">
+  <strong><%= comment.user.email_address %></strong>
+  <p><%= comment.body %></p>
+  <% if comment.user_id == Current.user&.id %>
+    <%= button_to "Delete", [comment.post, comment], method: :delete %>
+  <% end %>
+</article>

@@ -1,0 +1,6 @@
+<%= turbo_stream.replace dom_id(@post, :comment_form) do %>
+  <%= form_with model: [@post, Comment.new], id: dom_id(@post, :comment_form) do |f| %>
+    <%= f.text_area :body, required: true %>
+    <%= f.submit "Comment" %>
+  <% end %>
+<% end %>
