@@ -12,7 +12,7 @@
 <% end %>
 
 <% if post.user_id == Current.user&.id %>
-  <%= button_to "Delete", post_path(post), method: :delete %>
+  <%= button_to "Delete", post_path(post), method: :delete, class: "btn--danger" %>
 <% end %>
 
 <section id="<%= dom_id(post, :comments) %>">

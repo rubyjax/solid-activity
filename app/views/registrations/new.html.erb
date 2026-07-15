@@ -1,12 +1,26 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="shell shell--auth">
+  <div class="panel auth-panel">
+    <h1 class="auth-panel__brand">Solid Activity</h1>
+    <p class="auth-panel__lede">Create an account to post on the feed.</p>
 
-<%= form_with model: @user, url: registration_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address" %><br>
-  <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Confirm your password", maxlength: 72 %><br>
-  <%= form.submit "Sign up" %>
-<% end %>
-<br>
+    <%= form_with model: @user, url: registration_path, class: "stack" do |form| %>
+      <div>
+        <%= form.label :email_address, "Email" %>
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address" %>
+      </div>
+      <div>
+        <%= form.label :password, "Password" %>
+        <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter your password", maxlength: 72 %>
+      </div>
+      <div>
+        <%= form.label :password_confirmation, "Confirm password" %>
+        <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Confirm your password", maxlength: 72 %>
+      </div>
+      <%= form.submit "Sign up" %>
+    <% end %>
 
-<%= link_to "Sign in", new_session_path %>
+    <div class="auth-panel__links">
+      <%= link_to "Sign in", new_session_path %>
+    </div>
+  </div>
+</div>

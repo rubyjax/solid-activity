@@ -5,7 +5,7 @@
     <% end %>
 
     <% if post.user_id == Current.user&.id %>
-      <%= button_to "Delete", post_path(post), method: :delete %>
+      <%= button_to "Delete", post_path(post), method: :delete, class: "btn--danger" %>
     <% end %>
 
     <section id="<%= dom_id(post, :comments) %>">
@@ -13,7 +13,7 @@
     </section>
 
     <%= form_with model: [post, Comment.new], id: dom_id(post, :comment_form) do |f| %>
-      <%= f.text_area :body, required: true %>
+      <%= f.text_area :body, required: true, placeholder: "Add a comment…" %>
       <%= f.submit "Comment" %>
     <% end %>
   <% else %>

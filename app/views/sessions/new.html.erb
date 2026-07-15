@@ -1,12 +1,23 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="shell shell--auth">
+  <div class="panel auth-panel">
+    <h1 class="auth-panel__brand">Solid Activity</h1>
+    <p class="auth-panel__lede">Sign in to the live Solid stack feed.</p>
 
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
+    <%= form_with url: session_path, class: "stack" do |form| %>
+      <div>
+        <%= form.label :email_address, "Email" %>
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
+      </div>
+      <div>
+        <%= form.label :password, "Password" %>
+        <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
+      </div>
+      <%= form.submit "Sign in" %>
+    <% end %>
 
-<%= link_to "Forgot password?", new_password_path %>
-<%= link_to "Sign up", new_registration_path %>
+    <div class="auth-panel__links">
+      <%= link_to "Forgot password?", new_password_path %>
+      <%= link_to "Sign up", new_registration_path %>
+    </div>
+  </div>
+</div>

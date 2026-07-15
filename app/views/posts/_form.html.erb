@@ -1,4 +1,4 @@
-<%= form_with model: post do |f| %>
+<%= form_with model: post, class: "compose-form" do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -10,6 +10,8 @@
   <% end %>
 
   <%= f.label :body, "What's happening?" %>
-  <%= f.text_area :body, required: true, rows: 3 %>
-  <%= f.submit "Post" %>
+  <%= f.text_area :body, required: true, rows: 3, placeholder: "Write something for the feed…" %>
+  <div class="compose-form__actions">
+    <%= f.submit "Post" %>
+  </div>
 <% end %>

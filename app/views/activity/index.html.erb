@@ -1,16 +1,26 @@
 <%= turbo_stream_from "activity" %>
 
-<header>
-  <h1>Solid Activity</h1>
-  <p>Showcase feed — Queue enriches, Cable streams, Cache serves repeats.</p>
-  <%= link_to "Mission Control", "/jobs" %>
-  <%= button_to "Sign out", session_path, method: :delete %>
-</header>
+<div class="shell">
+  <header class="site-header">
+    <div class="site-header__brand">
+      <h1 class="site-header__title">Solid Activity</h1>
+      <p class="site-header__lede">Showcase feed — Queue enriches, Cable streams, Cache serves repeats.</p>
+    </div>
+    <div class="site-header__actions">
+      <%= link_to "Mission Control", "/jobs", class: "btn btn--ghost" %>
+      <%= button_to "Sign out", session_path, method: :delete, class: "btn btn--ghost" %>
+    </div>
+  </header>
 
-<section id="new_post_form">
-  <%= render "posts/form", post: @post %>
-</section>
+  <section id="new_post_form" class="panel panel--compose">
+    <%= render "posts/form", post: @post %>
+  </section>
 
-<div id="activity_feed">
-  <%= render @posts %>
+  <div id="activity_feed">
+    <% if @posts.any? %>
+      <%= render @posts %>
+    <% else %>
+      <div class="panel feed-empty">No posts yet — share the first one.</div>
+    <% end %>
+  </div>
 </div>
