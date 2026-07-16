@@ -425,7 +425,7 @@ button.btn--danger {
 .comments,
 section[id$="_comments"] {
   display: grid;
-  gap: 0.55rem;
+  gap: 0;
   margin-top: 0.85rem;
   padding-top: 0.85rem;
   border-top: 1px solid var(--stroke);
@@ -434,11 +434,28 @@ section[id$="_comments"] {
 .comment {
   display: grid;
   gap: 0.2rem;
-  padding: 0.65rem 0.75rem;
+  padding: 0.7rem 0.8rem;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid var(--stroke);
-  border-radius: var(--radius-sm);
+  border-radius: 0;
+  margin: 0;
   animation: rise-in 0.3s ease both;
+}
+
+.comment + .comment {
+  border-top: 0;
+}
+
+.comment:first-child {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.comment:last-child {
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.comment:only-child {
+  border-radius: var(--radius-sm);
 }
 
 .comment strong {
